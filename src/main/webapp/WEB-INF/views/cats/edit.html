@@ -22,12 +22,12 @@
                 <div class="title">Редактирование</div>
                 <div class="form_back">
                     <form th:method="patch" th:action="@{/cats/{id}(id=${cat.getId()})}" th:object="${cat}" enctype="multipart/form-data">
-                        <!--<div class="btn_back">
-                            <img class="img1" th:src="@{'images/' + *{image}}" width="200px" height="200px">
+                        <div class="btn_back">
+                            <img class="img1" th:src="@{${cat.getImage()}}" width="200px" height="200px">
                         </div>
                         <label for="image">Фото: </label>
-                        <input style="margin-bottom: 10px;" type="file" id="image">
-                        <br/>-->
+                        <input style="margin-bottom: 10px;" th:field="*{icon}" type="file" accept=".jpg" id="image" onchange="return validateFileExtension(this);">
+                        <br/>
                         <label for="name">Имя котика: </label>
                         <input type="text" th:field="*{name}" id="name">
                         <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</div>

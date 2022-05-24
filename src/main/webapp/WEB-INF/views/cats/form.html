@@ -6,6 +6,7 @@
         <link rel="stylesheet" th:href="@{style/formstyle.css}">
     </head>
     <body>
+        <script th:src="@{style/sizefile.js}"></script>
         <div class="wrapper">
             <div class="header">
                 <div class="hed1">
@@ -21,7 +22,7 @@
                 <div class="form_back">
                     <form th:method="post" enctype="multipart/form-data" th:action="@{/cats}" th:object="${cat}">
                         <label for="image">Фото: </label>
-                        <input style="margin-bottom: 10px;" type="file" id="image">
+                        <input style="margin-bottom: 10px;" th:field="*{icon}" type="file" accept=".jpg" id="image" onchange="return validateFileExtension(this);">
                         <br/>
                         <label for="name">Имя котика: </label>
                         <input type="text" th:field="*{name}" id="name">

@@ -1,8 +1,11 @@
 package ru.belyaeva.springapp1.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Base64;
 
 
 @Entity
@@ -28,14 +31,28 @@ public class Cat {
     @Column(name = "image")
     private String image;
 
+    @Transient
+    private MultipartFile icon;
 
-    public Cat(Long id, String name, String age, String gender, String image) {
+    @Lob
+    private byte[] avatar;
+
+    public Cat(Long id, String name, String age, String gender, String image, MultipartFile icon) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.image = image;
+        this.icon = icon;
     }
+
+    /*public Cat(Long id, String name, String age, String gender, String image) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.image = image;
+    }*/
 
     public Cat(){}
 
@@ -49,4 +66,8 @@ public class Cat {
     public void setGender(String gender) { this.gender = gender; }
     public String getImage() { return image; }
     public void setImage(String image) { this.image = image; }
+    public byte[] getAvatar() { return avatar; }
+    public void setAvatar(byte[] avatar) { this.avatar = avatar; }
+    public MultipartFile getIcon() { return icon; }
+    public void setIcon(MultipartFile icon) { this.icon = icon; }
 }

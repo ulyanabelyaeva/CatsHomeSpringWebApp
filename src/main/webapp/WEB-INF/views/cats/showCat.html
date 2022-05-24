@@ -19,7 +19,7 @@
 
         <div class="main">
             <div class="card">
-                <img width="300" height="300" th:src="@{'images/' + ${cat.getImage()}}">
+                <img width="300" height="300" th:src="@{${cat.getImage()}}">
                 <div th:text="${cat.getName()}">Имя кота</div>
                 <div th:text="${cat.getAge()}">Возраст кота</div>
                 <div th:text="${cat.getGender()}" style="margin-bottom: 30px;">Пол кота</div>

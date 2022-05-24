@@ -59,18 +59,25 @@ public class SpringConfig implements WebMvcConfigurer {
     // Declare your Static resources
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("images/**").addResourceLocations("/WEB-INF/views/cats/images/")
-                .setCachePeriod(31556926);
         registry.addResourceHandler("style/**").addResourceLocations("/WEB-INF/views/cats/style/")
                 .setCachePeriod(31556926);
-        registry.addResourceHandler("cats/images/**").addResourceLocations("/WEB-INF/views/cats/images/")
+        registry.addResourceHandler("images/**").addResourceLocations("/WEB-INF/views/cats/images/")
                 .setCachePeriod(31556926);
         registry.addResourceHandler("cats/style/**").addResourceLocations("/WEB-INF/views/cats/style/")
                 .setCachePeriod(31556926);
+        registry.addResourceHandler("cats/images/**").addResourceLocations("/WEB-INF/views/cats/images/")
+                .setCachePeriod(31556926);
+        registry.addResourceHandler("cats/22/images/**").addResourceLocations("/WEB-INF/views/cats/images/")
+                .setCachePeriod(31556926);
+        registry.addResourceHandler("cats/22/style/**").addResourceLocations("/WEB-INF/views/cats/style/")
+                .setCachePeriod(31556926);
+        registry.addResourceHandler("cats/23/images/**").addResourceLocations("/WEB-INF/views/cats/images/")
+                .setCachePeriod(31556926);
+        registry.addResourceHandler("cats/23/style/**").addResourceLocations("/WEB-INF/views/cats/style/")
+                .setCachePeriod(31556926);
 
-        registry.addResourceHandler("cats/1/images/**").addResourceLocations("/WEB-INF/views/cats/images/")
-                .setCachePeriod(31556926);
-        registry.addResourceHandler("cats/1/style/**").addResourceLocations("/WEB-INF/views/cats/style/")
-                .setCachePeriod(31556926);
+
+        /*registry.addResourceHandler("cats/**").addResourceLocations("/WEB-INF/views/cats/style/")
+                .setCachePeriod(31556926);*/
     }
 }
