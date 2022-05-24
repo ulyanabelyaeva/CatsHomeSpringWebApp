@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cats Home</title>
+        <link rel="stylesheet" th:href="@{style/formstyle.css}">
+        <link rel="stylesheet" th:href="@{style/editstyle.css}">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <div class="hed1">
+                    <img width="50px" height="50px" th:src="@{images/logo.png}">
+                    <p>Приют для котов</p>
+                </div>
+                <div class="hed2">
+                    <a th:href="@{/cats}">Cats Home</a>
+                </div>
+            </div>
+
+            <div class="main">
+                <div class="title">Редактирование</div>
+                <div class="form_back">
+                    <form th:method="patch" th:action="@{/cats/{id}(id=${cat.getId()})}" th:object="${cat}" enctype="multipart/form-data">
+                        <!--<div class="btn_back">
+                            <img class="img1" th:src="@{'images/' + *{image}}" width="200px" height="200px">
+                        </div>
+                        <label for="image">Фото: </label>
+                        <input style="margin-bottom: 10px;" type="file" id="image">
+                        <br/>-->
+                        <label for="name">Имя котика: </label>
+                        <input type="text" th:field="*{name}" id="name">
+                        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</div>
+                        <br/>
+                        <label for="age">Возраст котика: </label>
+                        <input type="text" th:field="*{age}" id="age">
+                        <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</div>
+                        <br/>
+                        <label for="gender">Пол: </label>
+                        <select name="list1" th:field="*{gender}" id="gender">
+                            <option value="Кот">Кот</option>
+                            <option value="Кошка">Кошка</option>
+                        </select>
+                        <br/>
+                        <div class="btn_back"><input type="submit" value="Готово!"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="foot"></div>
+            </div>
+
+        </div>
+    </body>
+</html>
