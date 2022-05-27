@@ -11,9 +11,6 @@ import ru.belyaeva.springapp1.repository.CatRepository;
 
 import javax.validation.Valid;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 @Controller
 @RequestMapping("/cats")
 public class CatsController {

@@ -3,18 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>Cats Home</title>
+        <link type="Image/x-icon" th:href="@{images/logo.png}" rel="icon">
         <link rel="stylesheet" th:href="@{style/formstyle.css}">
     </head>
     <body>
         <script th:src="@{style/sizefile.js}"></script>
         <div class="wrapper">
             <div class="header">
-                <div class="hed1">
-                    <img width="50px" height="50px" th:src="@{images/logo.png}">
-                    <p>Приют для котов</p>
-                </div>
-                <div class="hed2">
-                    <a th:href="@{/cats}">Cats Home</a>
+                <div class="header2">
+                    <div class="hed1">
+                        <p>Приют для котов</p>
+                    </div>
+                    <div class="hed2">
+                        <a th:href="@{/cats}">Cats Home</a>
+                    </div>
                 </div>
             </div>
 
