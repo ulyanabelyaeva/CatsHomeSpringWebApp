@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Cats Home</title>
-        <link type="Image/x-icon" th:href="@{images/logo.png}" rel="icon">
-        <link rel="stylesheet" th:href="@{style/index.css}">
+        <link type="Image/x-icon" href="/images/logo.png" rel="icon">
+        <link rel="stylesheet" href="/style/index.css">
     </head>
     <body>
         <div class="wrapper">
@@ -29,7 +29,7 @@
                 <div class="cards">
                     <a th:href="@{cats/{id}(id=${cat.getId()})}" th:each = "cat : ${cats}">
                         <div class="card">
-                            <img width="300" height="300" th:src="@{${cat.getImage()}}">
+                            <img width="300" height="300" th:src="${cat.getImage()}">
                             <div class="card_cat_name" th:text="${cat.getName()}">Cat Name</div>
                             <div class="card_cat_age" th:text="${cat.getAge()}">Cat Age</div>
                         </div>

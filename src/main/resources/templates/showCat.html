@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cats Home</title>
+    <link type="Image/x-icon" href="/images/logo.png" rel="icon">
+    <link rel="stylesheet" href="/style/showCatstyle.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header2">
+                <div class="hed1">
+                    <p>Приют для котов</p>
+                </div>
+                <div class="hed2">
+                    <a th:href="@{/cats}">Cats Home</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="card">
+                <img width="300" height="300" th:src="${cat.getImage()}">
+                <div th:text="${cat.getName()}">Имя кота</div>
+                <div th:text="${cat.getAge()}">Возраст кота</div>
+                <div th:text="${cat.getGender()}" style="margin-bottom: 30px;">Пол кота</div>
+                <a th:href="@{/cats/{id}/edit(id=${cat.getId()})}"><button>Редактировать</button></a>
+                <form th:method="delete" th:action="@{/cats/{id}(id=${cat.getId()})}">
+                    <input type="submit" value="Котика забрали!">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

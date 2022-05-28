@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Cats Home</title>
-        <link type="Image/x-icon" th:href="@{images/logo.png}" rel="icon">
-        <link rel="stylesheet" th:href="@{style/formstyle.css}">
-        <link rel="stylesheet" th:href="@{style/editstyle.css}">
+        <link type="Image/x-icon" href="/images/logo.png" rel="icon">
+        <link rel="stylesheet" href="/style/formstyle.css">
+        <link rel="stylesheet" href="/style/editstyle.css">
     </head>
     <body>
         <div class="wrapper">
@@ -25,7 +25,7 @@
                 <div class="form_back">
                     <form th:method="patch" th:action="@{/cats/{id}(id=${cat.getId()})}" th:object="${cat}" enctype="multipart/form-data">
                         <div class="btn_back">
-                            <img class="img1" th:src="@{${cat.getImage()}}" width="200px" height="200px">
+                            <img class="img1" th:src="${cat.getImage()}" width="200px" height="200px">
                         </div>
                         <label for="image">Фото: </label>
                         <input style="margin-bottom: 10px;" th:field="*{icon}" type="file" accept=".jpg" id="image" onchange="return validateFileExtension(this);">

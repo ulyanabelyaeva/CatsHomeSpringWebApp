@@ -16,7 +16,7 @@ public class CustomMultipartFile implements MultipartFile {
 
     private File file;
 
-    private String destPath = "src/main/webapp/WEB-INF/views/cats/images/";
+    private String destPath = "src/main/resources/static/images/";
 
     private FileOutputStream fileOutputStream;
 

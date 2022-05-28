@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cats Home</title>
+        <link type="Image/x-icon" href="/images/logo.png" rel="icon">
+        <link rel="stylesheet" href="/style/index.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <div class="header2">
+                    <div class="hed1">
+                        <p>Приют для котов</p>
+                    </div>
+                    <div class="hed2">
+                        <a th:href="@{/cats}">Cats Home</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main">
+
+                <div class="main_start">
+                    <p>Отдаем котов в добрые руки</p>
+                    <a th:href="@{cats/newCat}"><button class="btn_add">Добавить котика</button></a>
+                </div>
+
+                <div class="cards">
+                    <a th:href="@{cats/{id}(id=${cat.getId()})}" th:each = "cat : ${cats}">
+                        <div class="card">
+                            <img width="300" height="300" th:src="${cat.getImage()}">
+                            <div class="card_cat_name" th:text="${cat.getName()}">Cat Name</div>
+                            <div class="card_cat_age" th:text="${cat.getAge()}">Cat Age</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="foot"></div>
+            </div>
+        </div>
+    </body>
+</html>

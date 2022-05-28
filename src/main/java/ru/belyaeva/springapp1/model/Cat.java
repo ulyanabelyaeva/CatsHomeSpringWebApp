@@ -28,7 +28,6 @@ public class Cat {
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "image")
     private String image;
 
     @Transient

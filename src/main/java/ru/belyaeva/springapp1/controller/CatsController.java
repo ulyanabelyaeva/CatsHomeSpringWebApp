@@ -27,13 +27,13 @@ public class CatsController {
                 String fileName = "catt" + c.getId() + ".jpg";
                 CustomMultipartFile customMultipartFile = new CustomMultipartFile(c.getAvatar(), fileName);
                 customMultipartFile.transferTo(customMultipartFile.getFile());
-                c.setImage("images/" + fileName);
+                c.setImage("/images/" + fileName);
             }
         }
         //под ключом cats будет лежать список котов
         model.addAttribute("cats", cats);
         //название страницы
-        return "cats/index";
+        return "index";
     }
 
     @GetMapping("/{id}")
@@ -44,15 +44,15 @@ public class CatsController {
             String fileName = "catt" + cat.getId() + ".jpg";
             CustomMultipartFile customMultipartFile = new CustomMultipartFile(cat.getAvatar(), fileName);
             customMultipartFile.transferTo(customMultipartFile.getFile());
-            cat.setImage("images/" + fileName);
+            cat.setImage("/images/" + fileName);
         }
-        return "cats/showCat";
+        return "showCat";
     }
 
     @GetMapping("/newCat")
     public String showForm(Model model){
         model.addAttribute("cat", new Cat());
-        return "cats/form";
+        return "form";
     }
 
     @PostMapping()
@@ -61,7 +61,7 @@ public class CatsController {
         if (bindingResult.hasErrors()){
             System.out.println("Вызвана ошибка");
             System.out.println(bindingResult);
-            return "cats/form";
+            return "form";
         }
 
         cat.setAvatar(cat.getIcon().getBytes());
@@ -77,9 +77,9 @@ public class CatsController {
             String fileName = "catt" + cat.getId() + ".jpg";
             CustomMultipartFile customMultipartFile = new CustomMultipartFile(cat.getAvatar(), fileName);
             customMultipartFile.transferTo(customMultipartFile.getFile());
-            cat.setImage("images/" + fileName);
+            cat.setImage("/images/" + fileName);
         }
-        return "cats/edit";
+        return "edit";
     }
 
     @PatchMapping("/{id}")
@@ -88,7 +88,7 @@ public class CatsController {
                          @PathVariable("id") Long id) throws IOException {
 
         if (bindingResult.hasErrors())
-            return "cats/edit";
+            return "edit";
 
         cat.setAvatar(cat.getIcon().getBytes());
         catRepository.save(cat);

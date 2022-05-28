@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cats Home</title>
+        <link type="Image/x-icon" href="/images/logo.png" rel="icon">
+        <link rel="stylesheet" href="/style/formstyle.css">
+    </head>
+    <body>
+        <script th:src="@{style/sizefile.js}"></script>
+        <div class="wrapper">
+            <div class="header">
+                <div class="header2">
+                    <div class="hed1">
+                        <p>Приют для котов</p>
+                    </div>
+                    <div class="hed2">
+                        <a th:href="@{/cats}">Cats Home</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main">
+                <div class="form_back">
+                    <form th:method="post" enctype="multipart/form-data" th:action="@{/cats}" th:object="${cat}">
+                        <label for="image">Фото: </label>
+                        <input style="margin-bottom: 10px;" th:field="*{icon}" type="file" accept=".jpg" id="image" onchange="return validateFileExtension(this);">
+                        <br/>
+                        <label for="name">Имя котика: </label>
+                        <input type="text" th:field="*{name}" id="name">
+                        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</div>
+                        <br/>
+                        <label for="age">Возраст котика: </label>
+                        <input type="text" th:field="*{age}" id="age">
+                        <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</div>
+                        <br/>
+                        <label for="gender">Пол: </label>
+                        <select name="list1" th:field="*{gender}" id="gender">
+                            <option value="Кот">Кот</option>
+                            <option value="Кошка">Кошка</option>
+                        </select>
+                        <br/>
+                        <div class="btn_back"><input type="submit" value="Готово!"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="foot"></div>
+            </div>
+
+        </div>
+    </body>
+</html>
