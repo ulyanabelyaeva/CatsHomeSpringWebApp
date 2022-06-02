@@ -25,7 +25,7 @@
                     <form th:method="post" enctype="multipart/form-data" th:action="@{/cats}" th:object="${cat}">
                         <script src="/js/sizefile.js"></script>
                         <label for="image">Фото: </label>
-                        <input style="margin-bottom: 10px;" th:field="*{icon}" type="file" accept=".jpg" id="image" onchange="return validateFileExtension(this);">
+                        <input style="margin-bottom: 10px;" th:field="*{icon}" type="file" accept=".jpg, .png" id="image" onchange="return validateFileExtension(this);">
                         <br/>
                         <label for="name">Имя котика: </label>
                         <input type="text" th:field="*{name}" id="name">

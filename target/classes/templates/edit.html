@@ -28,7 +28,7 @@
                             <img class="img1" th:src="${cat.getImage()}" width="200px" height="200px">
                         </div>
                         <label for="image">Фото: </label>
-                        <input style="margin-bottom: 10px;" th:field="*{icon}" type="file" accept=".jpg" id="image" onchange="return validateFileExtension(this);">
+                        <input style="margin-bottom: 10px;" th:field="*{icon}" type="file" accept=".jpg, .png" id="image" onchange="return validateFileExtension(this);">
                         <br/>
                         <label for="name">Имя котика: </label>
                         <input type="text" th:field="*{name}" id="name">

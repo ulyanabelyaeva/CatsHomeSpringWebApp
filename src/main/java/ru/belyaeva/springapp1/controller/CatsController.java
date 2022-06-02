@@ -1,6 +1,8 @@
 package ru.belyaeva.springapp1.controller;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,8 +11,17 @@ import ru.belyaeva.springapp1.model.Cat;
 import ru.belyaeva.springapp1.model.CustomMultipartFile;
 import ru.belyaeva.springapp1.repository.CatRepository;
 
+import javax.servlet.*;
+import javax.servlet.descriptor.JspConfigDescriptor;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
+
 @Controller
 @RequestMapping("/cats")
 public class CatsController {
@@ -18,7 +29,7 @@ public class CatsController {
     private CatRepository catRepository;
 
     @GetMapping()
-    public String showAllCats(Model model) throws IOException {
+    public String showAllCats(Model model, HttpServletResponse response) throws IOException {
         model.addAttribute("cats", catRepository.findAll());
         return "index";
     }
@@ -69,7 +80,16 @@ public class CatsController {
         if (bindingResult.hasErrors())
             return "edit";
 
-        cat.setAvatar(cat.getIcon().getBytes());
+        if (!cat.getIcon().getOriginalFilename().equals("")){
+            cat.setAvatar(cat.getIcon().getBytes());
+            cat.setImage("/images/" + cat.getIcon().getOriginalFilename());
+
+            CustomMultipartFile customMultipartFile = new CustomMultipartFile(cat.getAvatar(), cat.getIcon().getOriginalFilename());
+            customMultipartFile.transferTo(customMultipartFile.getFile());
+        } else {
+            cat.setAvatar(catRepository.findById(id).get().getAvatar());
+            cat.setImage(catRepository.findById(id).get().getImage());
+        }
         catRepository.save(cat);
         return "redirect:/cats";
     }

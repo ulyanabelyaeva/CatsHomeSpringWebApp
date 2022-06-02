@@ -34,6 +34,7 @@ public class Cat {
     @Transient
     private MultipartFile icon;
 
+    @NotEmpty(message = "Укажите местонахождение котика или/и ваши контакты")
     @Column(name = "info")
     public String info;
 
