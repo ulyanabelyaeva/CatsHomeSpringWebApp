@@ -11,7 +11,7 @@
         <div class="header">
             <div class="header2">
                 <div class="hed1">
-                    <p>Приют для котов</p>
+                    <p>Интернет-приют для котов</p>
                 </div>
                 <div class="hed2">
                     <a th:href="@{/cats}">Cats Home</a>
@@ -25,12 +25,19 @@
                 <div th:text="${cat.getName()}">Имя кота</div>
                 <div th:text="${cat.getAge()}">Возраст кота</div>
                 <div th:text="${cat.getGender()}" style="margin-bottom: 30px;">Пол кота</div>
+                <div th:text="${cat.getInfo()}">Информация</div>
+                <br>
                 <a th:href="@{/cats/{id}/edit(id=${cat.getId()})}"><button>Редактировать</button></a>
                 <form th:method="delete" th:action="@{/cats/{id}(id=${cat.getId()})}">
                     <input type="submit" value="Котика забрали!">
                 </form>
             </div>
         </div>
+
+        <div class="footer">
+            <div class="foot"></div>
+        </div>
+
     </div>
 </body>
 </html>

@@ -59,6 +59,7 @@ a{
  .main{
      width: 80%;
      display: flex;
+     flex: 1 1 auto;
      flex-direction: column;
      justify-content: center;
      align-items: center;
@@ -71,6 +72,9 @@ a{
      justify-content: space-between;
      color: #012B5C;
  }
+ .main_start_2{
+    width: 60%;
+ }
  .btn_add{
     background-color: #012B5C;
     color: #F5F4FF;
@@ -79,7 +83,7 @@ a{
     border-radius: 5px;
     font-size: 20px;
     width: 200px;
-    height: 35px;
+    height: 50px;
     border: none;
     cursor: pointer;
  }

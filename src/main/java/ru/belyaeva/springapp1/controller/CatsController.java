@@ -17,35 +17,15 @@ public class CatsController {
     @Autowired
     private CatRepository catRepository;
 
-    //в аннотации то, что получаем на вход
     @GetMapping()
     public String showAllCats(Model model) throws IOException {
-        //получаем котов из бд
-        Iterable<Cat> cats = catRepository.findAll();
-        for (Cat c: cats) { //доступ к фоткам
-            if (c.getAvatar() != null){
-                String fileName = "catt" + c.getId() + ".jpg";
-                CustomMultipartFile customMultipartFile = new CustomMultipartFile(c.getAvatar(), fileName);
-                customMultipartFile.transferTo(customMultipartFile.getFile());
-                c.setImage("/images/" + fileName);
-            }
-        }
-        //под ключом cats будет лежать список котов
-        model.addAttribute("cats", cats);
-        //название страницы
+        model.addAttribute("cats", catRepository.findAll());
         return "index";
     }
 
     @GetMapping("/{id}")
     public String showCatById(@PathVariable("id") Long id, Model model) throws IOException {
-        Cat cat = catRepository.findById(id).get();
-        model.addAttribute("cat", cat);
-        if (cat.getAvatar() != null){
-            String fileName = "catt" + cat.getId() + ".jpg";
-            CustomMultipartFile customMultipartFile = new CustomMultipartFile(cat.getAvatar(), fileName);
-            customMultipartFile.transferTo(customMultipartFile.getFile());
-            cat.setImage("/images/" + fileName);
-        }
+        model.addAttribute("cat", catRepository.findById(id).get());
         return "showCat";
     }
 
@@ -64,21 +44,20 @@ public class CatsController {
             return "form";
         }
 
-        cat.setAvatar(cat.getIcon().getBytes());
+        cat.setAvatar(cat.getIcon().getBytes()); //картинка в бинарном виде
+        cat.setImage("/images/" + cat.getIcon().getOriginalFilename()); //путь к картинке
+
+        //создание картинки в проекте
+        CustomMultipartFile customMultipartFile = new CustomMultipartFile(cat.getAvatar(), cat.getIcon().getOriginalFilename());
+        customMultipartFile.transferTo(customMultipartFile.getFile());
+
         catRepository.save(cat);
         return "redirect:/cats";
     }
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") Long id) throws IOException {
-        Cat cat = catRepository.findById(id).get();
-        model.addAttribute("cat", cat);
-        if (cat.getAvatar() != null){
-            String fileName = "catt" + cat.getId() + ".jpg";
-            CustomMultipartFile customMultipartFile = new CustomMultipartFile(cat.getAvatar(), fileName);
-            customMultipartFile.transferTo(customMultipartFile.getFile());
-            cat.setImage("/images/" + fileName);
-        }
+        model.addAttribute("cat", catRepository.findById(id).get());
         return "edit";
     }
 

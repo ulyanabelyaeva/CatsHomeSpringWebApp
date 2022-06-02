@@ -11,7 +11,7 @@
             <div class="header">
                 <div class="header2">
                     <div class="hed1">
-                        <p>Приют для котов</p>
+                        <p>Интернет-приют для котов</p>
                     </div>
                     <div class="hed2">
                         <a th:href="@{/cats}">Cats Home</a>
@@ -22,8 +22,10 @@
             <div class="main">
 
                 <div class="main_start">
-                    <p>Отдаем котов в добрые руки</p>
-                    <a th:href="@{cats/newCat}"><button class="btn_add">Добавить котика</button></a>
+                    <div class="main_start_2">
+                        <p>Если вы нашли кота на улице, разместите объявление, указав необходимую информацию о нем. Помогите найти котику новый дом.</p>
+                    </div>
+                    <a th:href="@{cats/newCat}"><button class="btn_add">Разместить объявление</button></a>
                 </div>
 
                 <div class="cards">

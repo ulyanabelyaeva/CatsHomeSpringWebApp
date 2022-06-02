@@ -12,7 +12,7 @@
             <div class="header">
                 <div class="header2">
                     <div class="hed1">
-                        <p>Приют для котов</p>
+                        <p>Интернет-приют для котов</p>
                     </div>
                     <div class="hed2">
                         <a th:href="@{/cats}">Cats Home</a>
@@ -40,6 +40,10 @@
                             <option value="Кот">Кот</option>
                             <option value="Кошка">Кошка</option>
                         </select>
+                        <br/>
+                        <label for="info">Информация: </label>
+                        <input type="text" th:field="*{info}" id="info">
+                        <div style="color: red" th:if="${#fields.hasErrors('info')}" th:errors="*{info}">Error</div>
                         <br/>
                         <div class="btn_back"><input type="submit" value="Готово!"></div>
                     </form>

@@ -12,7 +12,7 @@
             <div class="header">
                 <div class="header2">
                     <div class="hed1">
-                        <p>Приют для котов</p>
+                        <p>Интернет-приют для котов</p>
                     </div>
                     <div class="hed2">
                         <a th:href="@{/cats}">Cats Home</a>
@@ -37,6 +37,10 @@
                         <label for="age">Возраст котика: </label>
                         <input type="text" th:field="*{age}" id="age">
                         <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</div>
+                        <br/>
+                        <label for="info">Информация: </label>
+                        <input type="text" th:field="*{info}" id="info">
+                        <div style="color: red" th:if="${#fields.hasErrors('info')}" th:errors="*{info}">Error</div>
                         <br/>
                         <label for="gender">Пол: </label>
                         <select name="list1" th:field="*{gender}" id="gender">

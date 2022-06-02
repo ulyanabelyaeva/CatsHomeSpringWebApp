@@ -28,12 +28,17 @@ public class Cat {
     @Column(name = "gender")
     private String gender;
 
+    @Column(name = "image")
     private String image;
 
     @Transient
     private MultipartFile icon;
 
+    @Column(name = "info")
+    public String info;
+
     @Lob
+    @Column(name = "avatar")
     private byte[] avatar;
 
     public Cat(Long id, String name, String age, String gender, String image, MultipartFile icon) {
@@ -44,14 +49,6 @@ public class Cat {
         this.image = image;
         this.icon = icon;
     }
-
-    /*public Cat(Long id, String name, String age, String gender, String image) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.image = image;
-    }*/
 
     public Cat(){}
 
@@ -69,4 +66,6 @@ public class Cat {
     public void setAvatar(byte[] avatar) { this.avatar = avatar; }
     public MultipartFile getIcon() { return icon; }
     public void setIcon(MultipartFile icon) { this.icon = icon; }
+    public String getInfo() { return info; }
+    public void setInfo(String info) { this.info = info; }
 }
