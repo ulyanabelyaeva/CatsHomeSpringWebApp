@@ -92,6 +92,10 @@ a{
     margin-bottom: 20px;
 }
 
+.card img{
+    border-radius: 10px;
+}
+
 
 
 .footer{
